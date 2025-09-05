@@ -5,6 +5,7 @@ return the index of the target if it exists, otherwise return -1.
 
 Time Complexity: O(log n)
 Space Complexity: O(1)
+
 */
 
 #include <bits/stdc++.h>
