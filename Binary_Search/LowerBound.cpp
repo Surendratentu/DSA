@@ -5,6 +5,7 @@ find the index of the first element ≥ target. Return -1 if no such element exi
 
 Time Complexity: O(log n),
 Space Complexity: O(1)
+
 */
 #include<iostream>
 #include<vector>
@@ -14,7 +15,7 @@ using namespace std;
 int FindLowerBound(vector<int>&nums,int target){
     int low=0,high=nums.size()-1;
     int LowerBound=-1;
-    if(nums[0]>=target) return 0;  // Edge case -- input (target) <= nums[0] directly return
+    if(nums[0]>=target) return 0;  
     while(low<=high){
         int mid=low+(high-low)/2;
         if(nums[mid]>=target){
