@@ -14,17 +14,17 @@ int FindUpperBound(vector<int>& nums, int target) {
     int low = 0, high = nums.size() - 1;
     int UpperBound = -1;
 
-    if (nums.empty()) return UpperBound;          // Edge case -- empty array
-    if (nums[0] > target) return 0;      // Edge case -- first element already > target
+    if (nums.empty()) return UpperBound;          
+    if (nums[0] > target) return 0;     
     if(target>=nums[nums.size()-1]) return UpperBound;
     while (low <= high) {
         int mid = low + (high - low) / 2;
 
         if (nums[mid] > target) {
-            UpperBound = mid;   // Potential upper bound found
-            high = mid - 1;     // Move left to find first element > target
+            UpperBound = mid;   
+            high = mid - 1;     
         } else {
-            low = mid + 1;      // Move right since nums[mid] <= target
+            low = mid + 1;     
         }
     }
 
