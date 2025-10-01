@@ -3,7 +3,7 @@ using namespace std;
 
 /*
     Insertion Sort Algorithm
-    ------------------------
+    -----------------------
     Description:
     - Insertion Sort is a simple comparison-based sorting algorithm.
     - It builds the sorted array one element at a time by inserting
