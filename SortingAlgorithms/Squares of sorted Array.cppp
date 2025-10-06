@@ -1,0 +1,74 @@
+/*
+This program computes the squares of a sorted integer array and returns a new array
+with the squares sorted in non-decreasing order.
+
+Algorithm:
+1. Find the first non-negative number in the array.
+2. Use two pointers: one moving left through the negative numbers, one moving right through the non-negative numbers.
+3. Compare squares of numbers at both pointers and insert the smaller one into the result array.
+4. Continue until all elements are processed.
+
+Time Complexity: O(n) - Each element is processed exactly once during merging.
+Space Complexity: O(n) - Additional array of size n is used to store results.
+*/
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> res(n);
+        int p = 0;
+
+        // Find the first non-negative number
+        while (p < n && nums[p] < 0) p++;
+        int q = p - 1;
+
+        int idx = 0;
+
+        // Merge negative and non-negative parts
+        while (q >= 0 && p < n) {
+            int negSq = nums[q] * nums[q];
+            int posSq = nums[p] * nums[p];
+
+            if (negSq < posSq) {
+                res[idx++] = negSq;
+                q--;
+            } else {
+                res[idx++] = posSq;
+                p++;
+            }
+        }
+
+        // Remaining negative numbers
+        while (q >= 0) {
+            res[idx++] = nums[q] * nums[q];
+            q--;
+        }
+
+        // Remaining non-negative numbers
+        while (p < n) {
+            res[idx++] = nums[p] * nums[p];
+            p++;
+        }
+
+        return res;
+    }
+};
+
+int main() {
+    vector<int> nums = {-7, -3, 0, 2, 5};
+    Solution sol;
+    vector<int> result = sol.sortedSquares(nums);
+
+    cout << "Sorted squares: ";
+    for (int val : result) {
+        cout << val << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
